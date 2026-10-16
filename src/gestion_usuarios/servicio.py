@@ -36,7 +36,7 @@ class ServicioUsuarios:
                    + v.validar_clave(clave) + v.validar_rol(rol))
         if errores:
             raise ErrorValidacion(errores)
-        correo = correo.strip()
+        correo = v.normalizar_correo(correo)
         if self.repo.obtener_por_correo(correo):
             raise ErrorConflicto("Ya existe un usuario con ese correo.")
         return self.repo.crear(nombre.strip(), correo, generar_hash(clave), rol)
