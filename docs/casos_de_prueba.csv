@@ -1,0 +1,37 @@
+﻿ID,Módulo,Tipo,Prueba automatizada,Descripción / pasos,Resultado esperado,Prioridad,Resultado obtenido
+CP-01,Registro,Unitaria,test_cp01_correo_valido,Validar correos con formato correcto (incluye mayúsculas y espacios),Sin errores de validación,Alta,Pasó
+CP-02,Registro,Unitaria,test_cp02_correo_invalido,"Validar correos vacíos, sin @, sin dominio, con espacios o >120 caracteres",Se informa error de formato,Alta,Pasó
+CP-03,Registro,Unitaria (valores límite),test_cp03_clave_valida_y_limites,Contraseñas válidas de 8 y 64 caracteres,Contraseña aceptada,Alta,Pasó
+CP-04,Registro,Unitaria (valores límite),test_cp04_clave_invalida,"Contraseñas de 7 y 65 caracteres, sin mayúscula, minúscula, dígito o especial",Mensaje específico por cada regla incumplida,Alta,Pasó
+CP-05,Registro / Perfil,Unitaria (valores límite),test_cp05_nombre,"Nombres de 2, 3, 60 y 61 caracteres; con tildes; con dígitos",Solo se aceptan 3–60 letras y espacios,Media,Pasó
+CP-06,Roles,Unitaria,test_cp06_rol,"Roles 'estandar', 'administrador', 'root', vacío",Solo se aceptan los dos roles definidos,Media,Pasó
+CP-07,Seguridad,Unitaria,test_cp07_*,Generar y verificar hash; sal aleatoria; hash corrupto,La clave no se guarda en texto plano; verificación correcta,Alta,Pasó
+CP-08,Registro,Integración,test_cp08_registro_exitoso_persiste_en_bd,Registrar usuario válido,Usuario guardado en SQLite con rol 'estandar',Alta,Pasó
+CP-09,Registro,Integración,test_cp09_...,Registrar con todos los campos inválidos,Se reportan los 4 errores y no se guarda nada,Alta,Pasó
+CP-10,Registro,Integración,test_cp10_registro_correo_duplicado,Registrar correo ya existente,Error de conflicto,Alta,Pasó
+CP-11,Registro,Integración / Regresión,test_cp11_def001_...,Registrar ' LUIS@UMB.EDU.CO ' cuando existe 'luis@umb.edu.co',Error de conflicto (protege DEF-001),Alta,Pasó
+CP-12,Inicio de sesión,Integración,test_cp12_login_exitoso,Login con credenciales correctas,Devuelve el usuario autenticado,Alta,Pasó
+CP-13,Inicio de sesión,Integración,test_cp13_login_clave_incorrecta,Login con clave incorrecta,'Credenciales inválidas',Alta,Pasó
+CP-14,Inicio de sesión,Integración / Seguridad,test_cp14_...,Login con correo inexistente,Mismo mensaje genérico (no revela si el correo existe),Media,Pasó
+CP-15,Inicio de sesión,Seguridad,test_cp15_bloqueo_tras_tres_intentos,3 intentos fallidos y luego clave correcta,Cuenta bloqueada,Alta,Pasó
+CP-16,Inicio de sesión,Integración,test_cp16_...,2 fallos y luego login correcto,Contador de intentos vuelve a 0,Media,Pasó
+CP-17,Inicio de sesión,Integración,test_cp17_admin_desbloquea_cuenta,Administrador desbloquea cuenta bloqueada,El usuario puede volver a ingresar,Media,Pasó
+CP-18,Perfil,Integración,test_cp18_usuario_edita_su_perfil,Usuario cambia su nombre y correo,"Datos actualizados, correo en minúsculas",Alta,Pasó
+CP-19,Perfil,Seguridad,test_cp19_...,Usuario estándar edita perfil ajeno,Error de permisos,Alta,Pasó
+CP-20,Perfil,Integración,test_cp20_*,Editar a un correo ya usado o con datos inválidos,Conflicto / error de validación,Media,Pasó
+CP-21,Roles,Integración,test_cp21_admin_cambia_rol,Administrador cambia rol de un usuario,Rol actualizado,Alta,Pasó
+CP-22,Roles,Seguridad,test_cp22_*,"Usuario estándar intenta cambiar roles, listar o desbloquear",Error de permisos,Alta,Pasó
+CP-23,Eliminación,Integración,test_cp23_...,Usuario elimina su propia cuenta,El usuario deja de existir,Alta,Pasó
+CP-24,Eliminación,Integración,test_cp24_no_eliminar_ultimo_admin,Último administrador intenta eliminarse,Operación rechazada,Media,Pasó
+CP-25,Eliminación,Integración,test_cp25_eliminar_inexistente,Eliminar id inexistente,Error 'no encontrado',Baja,Pasó
+CP-26,Flujo completo,Sistema (E2E),test_cp26_flujo_completo_...,Registro → login → consulta → edición → eliminación vía API,"201, 200, 200, 204 y sesión invalidada (401)",Alta,Pasó
+CP-27,Registro,Sistema,test_cp27_*,POST /usuarios con datos inválidos o cuerpo no JSON,HTTP 400 con lista de detalles,Alta,Pasó
+CP-28,Registro,Sistema,test_cp28_...,POST /usuarios duplicado,HTTP 409,Alta,Pasó
+CP-29,Seguridad,Sistema / Seguridad,test_cp29_respuesta_nunca_expone_hash,Revisar cuerpo de respuesta del registro,No contiene hash ni contraseña,Alta,Pasó
+CP-30,Seguridad,Sistema / Seguridad,test_cp30_...,Registro anónimo enviando rol 'administrador',Se crea como 'estandar' (no hay escalamiento),Alta,Pasó
+CP-31,Seguridad,Sistema / Seguridad,test_cp31_...,"GET /usuarios sin token, token falso o esquema Basic",HTTP 401,Alta,Pasó
+CP-32,Inicio de sesión,Sistema,test_cp32_...,POST /login con clave incorrecta,HTTP 401,Alta,Pasó
+CP-33,Roles,Sistema,test_cp33_admin_lista_y_cambia_rol,Admin lista usuarios y cambia un rol vía API,Lista completa; rol actualizado,Media,Pasó
+CP-34,Roles,Sistema / Seguridad,test_cp34_...,Usuario estándar accede a rutas de administrador,HTTP 403,Alta,Pasó
+CP-35,Perfil,Sistema,test_cp35_...,GET /usuarios/999 como admin,HTTP 404,Baja,Pasó
+CP-36,Eliminación,Sistema,test_cp36_...,Admin elimina a un usuario con sesión activa,El token del usuario eliminado deja de servir (401),Media,Pasó

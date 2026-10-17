@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.17, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/claude/repo
+configfile: pytest.ini
+testpaths: tests
+plugins: platformdirs-4.12.4, anyio-4.15.1, cov-7.1.0
+collected 68 items
+
+tests/test_integracion_servicio.py .....................                 [ 30%]
+tests/test_sistema_api.py ..............                                 [ 51%]
+tests/test_unitarias_validadores.py .................................    [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.17-final-0 _______________
+
+Name                                  Stmts   Miss  Cover
+---------------------------------------------------------
+src/gestion_usuarios/__init__.py          0      0   100%
+src/gestion_usuarios/api.py              74      3    96%
+src/gestion_usuarios/repositorio.py      43      0   100%
+src/gestion_usuarios/seguridad.py        16      0   100%
+src/gestion_usuarios/servicio.py         96      0   100%
+src/gestion_usuarios/validadores.py      47      0   100%
+---------------------------------------------------------
+TOTAL                                   276      3    99%
+============================== 68 passed in 1.89s ==============================
