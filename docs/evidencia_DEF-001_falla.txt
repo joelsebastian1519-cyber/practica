@@ -1,0 +1,25 @@
+testpaths: tests
+plugins: platformdirs-4.12.4, anyio-4.15.1, cov-7.1.0
+collected 68 items
+
+tests/test_integracion_servicio.py ...F.................                 [ 30%]
+tests/test_sistema_api.py ..............                                 [ 51%]
+tests/test_unitarias_validadores.py .................................    [100%]
+
+=================================== FAILURES ===================================
+_______________ test_cp11_def001_correo_duplicado_con_mayusculas _______________
+
+servicio = <gestion_usuarios.servicio.ServicioUsuarios object at 0x7f5302b20d60>
+estandar = Usuario(id=1, nombre='Luis Usuario', correo='luis@umb.edu.co', hash_clave='9f94e58225426a6b9dda1836e80c5682$ac5a9f89d37d58ba25d0e0f886496ce3c7f1b01050095a5dff6b7d6d2e96c9f7', rol='estandar', intentos_fallidos=0, bloqueado=False)
+
+    @pytest.mark.regresion
+    def test_cp11_def001_correo_duplicado_con_mayusculas(servicio, estandar):
+        """Regresión DEF-001: 'LUIS@UMB.EDU.CO' se aceptaba como correo nuevo."""
+>       with pytest.raises(ErrorConflicto):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ErrorConflicto
+
+tests/test_integracion_servicio.py:34: Failed
+=========================== short test summary info ============================
+FAILED tests/test_integracion_servicio.py::test_cp11_def001_correo_duplicado_con_mayusculas
+========================= 1 failed, 67 passed in 1.77s =========================
