@@ -1,0 +1,35 @@
+* 7abfe02 Agregar log.txt (git log --oneline --graph --all)
+*   17aa170 Merge pull request #5 from usuario/docs/plan-de-pruebas
+|\  
+| * 6e945b3 docs: README con estructura e instrucciones de ejecución
+| * 957255d docs: plan de pruebas, 36 casos, registro de defectos y reportes de ejecución
+|/  
+*   69972f9 Merge pull request #4 from usuario/fix/DEF-001-correo-mayusculas
+|\  
+| * 73ce61c fix(DEF-001): normalizar correo a minúsculas antes de validar duplicados
+|/  
+*   6672ca0 Merge pull request #3 from usuario/test/pruebas-automatizadas
+|\  
+| * 40a2f40 test: pruebas de sistema extremo a extremo sobre la API (CP-26 a CP-36)
+| * 26c99ea test: pruebas de integración servicio + SQLite (CP-08 a CP-25)
+| * 8bfa1ad test: pruebas unitarias de validadores y seguridad (CP-01 a CP-07)
+|/  
+*   804da29 Merge pull request #2 from usuario/feature/modulo-usuarios
+|\  
+| * fa338aa feat: API REST Flask del módulo de usuarios
+| * e5e0a79 feat: servicio de registro, login con bloqueo, perfil, roles y eliminación
+| * cf9be67 feat: repositorio SQLite de usuarios
+| * d3fd557 feat: validadores de datos y hash PBKDF2 de contraseñas
+| * 2b2d768 chore: configuración del proyecto (dependencias, pytest, gitignore)
+|/  
+*   d2ed017 Merge colaborador-readme: conflicto resuelto manualmente en la línea de autores
+|\  
+| * 4fe8859 Colaborador agrega su nombre en la línea de autores
+* | 459d219 Se agrega el rol del autor principal
+|/  
+*   0a94697 Merge pull request #1 from usuario/mejora-readme
+|\  
+| * 4399a55 Añadida descripción del proyecto
+|/  
+* e6060ba Agregando autor al README
+* 659bcd7 Initial commit
